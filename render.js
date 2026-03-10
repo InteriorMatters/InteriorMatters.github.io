@@ -42,4 +42,34 @@
 
   container.innerHTML = '';
   stories.forEach(story => container.appendChild(createCard(story)));
+
+  // Add JSON-LD structured data for SEO
+  const existingLd = document.getElementById('jsonld-stories');
+  if (existingLd) existingLd.remove();
+
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": stories.map((story, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "NewsArticle",
+        headline: story.title,
+        url: new URL(story.url, location.href).href,
+        datePublished: story.date,
+        author: {
+          "@type": "Person",
+          name: story.author,
+        },
+        description: story.summary,
+      },
+    })),
+  };
+
+  const script = document.createElement('script');
+  script.id = 'jsonld-stories';
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(ld, null, 2);
+  document.head.appendChild(script);
 })();
