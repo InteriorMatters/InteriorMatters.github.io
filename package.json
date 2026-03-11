@@ -1,0 +1,10 @@
+{
+  "name": "news-blog2026",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://interiormatters.github.io/",
+  "scripts": {
+    "generate:sitemap": "node generate-sitemap.js",
+    "watch:sitemap": "node generate-sitemap.js --watch"
+  }
+}
