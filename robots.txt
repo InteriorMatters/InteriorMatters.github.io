@@ -1,7 +1,4 @@
-User-agent: OAI-SearchBot/1.0; +https://openai.com/searchbot
-Allow: /
-
 User-agent: *
-Allow: /
+Disallow:
 
-Sitemap: https://interiormatters.github.io/sitemap.xml
+Sitemap: /sitemap.xml
